@@ -1,16 +1,14 @@
-# FizzBuzz 1 - Simple
+# FizzBuzz 1 - Advanced
 # Just run file and outputs to shell
 # Runs through 0 to 100
-# Using if...else
+# Using string concatenation
 
 for i in range(1, 101):
     out = ""
     if (i % 3 == 0):
-        out = "Fizz"
+        out += "Fizz"
     if (i % 5 == 0):
-        out = "Buzz"
-    if (i % 3 == 0) and (i % 5 == 0):
-        out = "FizzBuzz"
+        out += "Buzz"
     if len(out) == 0:
         out = i
-    print(out)
+    print (out)
