@@ -1,6 +1,6 @@
 # FizzBuzz 1 - Simple
-# Just run file and outputs to shell
-# Runs through 0 to 100
+# Run file and outputs to shell
+# Runs through 1 to 100
 # Using if...else
 
 for i in range(1, 101):
