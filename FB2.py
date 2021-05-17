@@ -7,12 +7,6 @@ class Info:
         self.numStart = 0
         self.numEnd = 0
         self.step = 1
-    def updStart(num):
-        self.numStart = num
-    def updEnd(num):
-        self.numEnd = num
-    def updStep(num):
-        self.step = num
     def setup(self):
         self.numStart = int(input("Input the number you would like to count from\n"))
         self.numEnd = int(input("Input the number you would like to count to\n"))
