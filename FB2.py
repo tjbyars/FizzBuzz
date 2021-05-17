@@ -2,34 +2,36 @@
 # Run file and outputs to file
 # User specifed numbers and phrases and number counted up to
 
-class Info(object):
+class Info:
     def __init__(self):
         self.numStart = 0
         self.numEnd = 0
-        self.step = 0
+        self.step = 1
     def updStart(num):
         self.numStart = num
     def updEnd(num):
         self.numEnd = num
     def updStep(num):
         self.step = num
+    def setup(self):
+        self.numStart = int(input("Input the number you would like to count from\n"))
+        self.numEnd = int(input("Input the number you would like to count to\n"))
+        if self.numStart < self.numEnd:
+            step = -1
+        if self.numStart == self.numEnd:
+            setup()
 
-def setup():
-    numStart = input("Input the number you would like to count from\n")
-    numEnd = input("Input the number you would like to count to\n")
-    if numStart < numEnd:
-        step = -1
-    if numStart == numEnd:
-        setup()
+info = Info()
+info.setup() # Is true if increasing, false if decreasing
+print(info.numStart, "to", info.numEnd, "step", info.step)
 
-setup() # Is true if increasing, false if decreasing
-print(numStart, "to", numEnd)
-
-for i in range(numStart, numEnd, step):
+for i in range(info.numStart, info.numEnd, info.step):
     outString = ""
     if i % 3 == 0:
-        outString.append("Fizz")
-    if i % 5 == 5:
-        outString.append("Buzz")
-    print(i)
-    print(outString)
+        outString += "Fizz"
+    if i % 5 == 0:
+        outString += "Buzz"
+    if len(outString) == 0:
+        print(i)
+    else:
+        print(outString)
