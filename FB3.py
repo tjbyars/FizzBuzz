@@ -1,6 +1,6 @@
 # FizzBuzz 3
 # Run file and outputs to shell
-# User specifed numbers and phrases and number counted up to
+# User specifed numbers and phrases and number counted up/down to
 
 class Info:
     def __init__(self):
@@ -21,19 +21,17 @@ class Info:
         return inputRel
     def setup(self):
         self.numStart = int(input("Input the number you would like to count from\n"))
-        self.numEnd = int(input("Input the number you would like to count to\n")) + 1
-        if self.numStart < self.numEnd:
-            step = -1
-        if self.numStart == self.numEnd:
-            setup()
+        self.numEnd = int(input("Input the number you would like to count to\n"))
+        if self.numStart > self.numEnd:
+            info.step = -1
+            self.numEnd -= 1
+        else:
+            self.numEnd += 1
         run = True
         while run == True:
-            print("pre count: ", self.count)
             nextInp = self.relSetup()
-            print("post count: ", self.count)
             if len(nextInp) == 0:
                 if self.count == 1:
-                    print("default")
                     self.relationList = [[3,"Fizz"],[5,"Buzz"]]
                 run = False
             else:
