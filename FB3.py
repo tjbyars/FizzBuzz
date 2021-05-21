@@ -9,28 +9,16 @@ class Info:
         self.step = 1
         self.relationList = []
         self.count = 0
-        #[[3, "Fizz"], [5, "Buzz"]]
     def relSetup(self):
-        run = True
-        while run == True:
-            print("start count: ", self.count)
-            if self.count == 0:
-                inputRel = input("Input the first number-phrase relation you would like in the format: \n"
-                                "3,Fizz \n"
-                                "Once you have input the relation, press enter. If you wish to run the standard FizzBuzz game, press enter before entering any relations \n")
-            else:
-                inputRel = input("Enter the next number-phrase relation in the format: \n"
-                                 "3,Fizz \n")
-            if len(inputRel) == 0:
-                self.count = -5
-            if self.count >= 0:
-                print("sus")
-                self.relationList.append(list(inputRel.split(",")))
-                self.count += 1
-                self.relSetup()
-            else:
-                run = False
-                
+        if self.count == 0:
+            inputRel = input("Input the first number-phrase relation you would like in the format: \n"
+                            "3,Fizz \n"
+                            "Once you have input the relation, press enter. If you wish to run the standard FizzBuzz game, press enter before entering any relations \n")
+        else:
+            inputRel = input("Enter the next number-phrase relation in the format: \n"
+                             "3,Fizz \n")
+        self.count += 1
+        return inputRel
     def setup(self):
         self.numStart = int(input("Input the number you would like to count from\n"))
         self.numEnd = int(input("Input the number you would like to count to\n")) + 1
@@ -38,9 +26,18 @@ class Info:
             step = -1
         if self.numStart == self.numEnd:
             setup()
-        self.count = 0
-        while self.count >= 0:
-            self.relSetup()
+        run = True
+        while run == True:
+            print("pre count: ", self.count)
+            nextInp = self.relSetup()
+            print("post count: ", self.count)
+            if len(nextInp) == 0:
+                if self.count == 1:
+                    print("default")
+                    self.relationList = [[3,"Fizz"],[5,"Buzz"]]
+                run = False
+            else:
+                self.relationList.append(list(nextInp.split(",")))
 
 info = Info()
 info.setup()
