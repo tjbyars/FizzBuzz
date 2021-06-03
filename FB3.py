@@ -35,7 +35,15 @@ class Info:
                     self.relationList = [[3,"Fizz"],[5,"Buzz"]]
                 run = False
             else:
-                self.relationList.append(list(nextInp.split(",")))
+                tempList = list(nextInp.split(","))
+                if len(self.relationList) == 0:
+                    self.relationList.append(list(nextInp.split(",")))
+                else:
+                    for relation in self.relationList:
+                        if relation[0] == tempList[0]:
+                            relation[1] = tempList[1]
+                        else:
+                            self.relationList.append(list(nextInp.split(",")))
 
 info = Info()
 info.setup()
