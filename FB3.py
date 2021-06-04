@@ -8,15 +8,13 @@ class Info:
         self.numEnd = 0
         self.step = 1
         self.relationList = []
-        self.count = 0
+        self.count = 0                      ## change count to being based on relationList length
     def relSetup(self):
         if self.count == 0:
-            inputRel = input("Input the first number-phrase relation you would like in the format: \n"
-                            "3,Fizz \n"
+            inputRel = input("Input the first number-phrase relation you would like in the format: 3,Fizz \n"
                             "Once you have input the relation, press enter. If you wish to run the standard FizzBuzz game, press enter before entering any relations \n")
         else:
-            inputRel = input("Enter the next number-phrase relation in the format: \n"
-                             "3,Fizz \n")
+            inputRel = input("Enter the next number-phrase relation in the format: 3,Fizz \n")
         self.count += 1
         return inputRel
     def setup(self):
@@ -30,20 +28,26 @@ class Info:
         run = True
         while run == True:
             nextInp = self.relSetup()
+            containsRel = False
             if len(nextInp) == 0:
                 if self.count == 1:
                     self.relationList = [[3,"Fizz"],[5,"Buzz"]]
                 run = False
             else:
-                tempList = list(nextInp.split(","))
+                inpList = list(nextInp.split(","))
+                print("relationList: " , self.relationList)
+                print("Input: " , inpList)
                 if len(self.relationList) == 0:
-                    self.relationList.append(list(nextInp.split(",")))
+                    self.relationList.append(inpList)
                 else:
                     for relation in self.relationList:
-                        if relation[0] == tempList[0]:
-                            relation[1] = tempList[1]
-                        else:
-                            self.relationList.append(list(nextInp.split(",")))
+                        if relation[0] == inpList[0]:
+                            containsRel = True
+                    if containsRel == True:
+                        relation[1] = inpList[1]
+                    else:
+                        #self.relationList.append(list(nextInp.split(",")))
+                        self.relationList.append(inpList)
 
 info = Info()
 info.setup()
