@@ -14,6 +14,7 @@ class Info:
                             "Once you have input the relation, press enter. If you wish to run the standard FizzBuzz game, press enter before entering any relations \n")
         else:
             inputRel = input("Enter the next number-phrase relation in the format: 3,Fizz \n"
+                            "If you do not wish to enter any more relations, enter nothing \n")
         return inputRel
     def setup(self):
         self.numStart = int(input("Input the number you would like to count from\n"))
@@ -33,8 +34,6 @@ class Info:
                 run = False
             else:
                 inpList = list(nextInp.split(","))
-                print("relationList: " , self.relationList)
-                print("Input: " , inpList)
                 if len(self.relationList) == 0:
                     self.relationList.append(inpList)
                 else:
